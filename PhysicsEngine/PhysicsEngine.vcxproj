@@ -19,46 +19,51 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BVHKDTree.cpp" />
-    <ClCompile Include="Font.cpp" />
-    <ClCompile Include="FontLoader.cpp" />
-    <ClCompile Include="FontManager.cpp" />
-    <ClCompile Include="FTLoader.cpp" />
-    <ClCompile Include="Game.cpp" />
-    <ClCompile Include="Geometry.cpp" />
-    <ClCompile Include="glad.c" />
-    <ClCompile Include="Graphics.cpp" />
-    <ClCompile Include="InputControls.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Mass.cpp" />
-    <ClCompile Include="MassSpringScene.cpp" />
-    <ClCompile Include="Object.cpp" />
-    <ClCompile Include="Particle.cpp" />
-    <ClCompile Include="ParticleForceGenerator.cpp" />
-    <ClCompile Include="Physics.cpp" />
-    <ClCompile Include="Scene.cpp" />
-    <ClCompile Include="SceneManager.cpp" />
-    <ClCompile Include="TextRenderer.cpp" />
+    <ClCompile Include="src\DataStructures\BVHKDTree.cpp" />
+    <ClCompile Include="src\Contents\Fonts\Font.cpp" />
+    <ClCompile Include="src\Contents\Fonts\FontLoaders\FontLoader.cpp" />
+    <ClCompile Include="src\Contents\Fonts\FontManager.cpp" />
+    <ClCompile Include="src\Contents\Fonts\FontLoaders\FTLoader.cpp" />
+    <ClCompile Include="src\Main\Game.cpp" />
+    <ClCompile Include="src\Physics\Geometry.cpp" />
+    <ClCompile Include="src\glad.c" />
+    <ClCompile Include="src\Graphics\Graphics.cpp" />
+    <ClCompile Include="src\Controls\InputControls.cpp" />
+    <ClCompile Include="src\Main\main.cpp" />
+    <ClCompile Include="src\Physics\Mass.cpp" />
+    <ClCompile Include="src\Contents\Scenes\MassSpringScene.cpp" />
+    <ClCompile Include="src\Physics\Object.cpp" />
+    <ClCompile Include="src\Physics\Particle.cpp" />
+    <ClCompile Include="src\Physics\ParticleForceGenerator.cpp" />
+    <ClCompile Include="src\Physics\Physics.cpp" />
+    <ClCompile Include="src\Contents\Scenes\Scene.cpp" />
+    <ClCompile Include="src\Contents\Scenes\SceneManager.cpp" />
+    <ClCompile Include="src\Graphics\Shader.cpp" />
+    <ClCompile Include="src\Graphics\TextRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BVHKDTree.h" />
-    <ClInclude Include="Font.h" />
-    <ClInclude Include="FontLoader.h" />
-    <ClInclude Include="FontManager.h" />
-    <ClInclude Include="FTLoader.h" />
-    <ClInclude Include="Game.h" />
-    <ClInclude Include="Geometry.h" />
-    <ClInclude Include="Graphics.h" />
-    <ClInclude Include="InputControls.h" />
-    <ClInclude Include="Mass.h" />
-    <ClInclude Include="MassSpringScene.h" />
-    <ClInclude Include="Object.h" />
-    <ClInclude Include="Particle.h" />
-    <ClInclude Include="ParticleForceGenerator.h" />
-    <ClInclude Include="Physics.h" />
-    <ClInclude Include="Scene.h" />
-    <ClInclude Include="SceneManager.h" />
-    <ClInclude Include="TextRenderer.h" />
+    <ClInclude Include="src\DataStructures\BVHKDTree.h" />
+    <ClInclude Include="src\Contents\Fonts\Font.h" />
+    <ClInclude Include="src\Contents\Fonts\FontLoaders\FontLoader.h" />
+    <ClInclude Include="src\Contents\Fonts\FontManager.h" />
+    <ClInclude Include="src\Contents\Fonts\FontLoaders\FTLoader.h" />
+    <ClInclude Include="src\Main\Game.h" />
+    <ClInclude Include="src\Physics\Geometry.h" />
+    <ClInclude Include="src\Graphics\Graphics.h" />
+    <ClInclude Include="src\Controls\InputControls.h" />
+    <ClInclude Include="src\Physics\Mass.h" />
+    <ClInclude Include="src\Contents\Scenes\MassSpringScene.h" />
+    <ClInclude Include="src\Physics\Object.h" />
+    <ClInclude Include="src\Physics\Particle.h" />
+    <ClInclude Include="src\Physics\ParticleForceGenerator.h" />
+    <ClInclude Include="src\Physics\Physics.h" />
+    <ClInclude Include="src\Contents\Scenes\Scene.h" />
+    <ClInclude Include="src\Contents\Scenes\SceneManager.h" />
+    <ClInclude Include="src\Graphics\Shader.h" />
+    <ClInclude Include="src\Graphics\TextRenderer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Resources\Fonts\arial.ttf" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -135,6 +140,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -151,6 +157,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

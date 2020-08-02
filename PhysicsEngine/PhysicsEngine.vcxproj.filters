@@ -10,9 +10,12 @@
     </Filter>
     <Filter Include="Graphics">
       <UniqueIdentifier>{919ae461-9161-4c7a-9c25-01f35e878166}</UniqueIdentifier>
+      <Extensions>cpp;h</Extensions>
     </Filter>
     <Filter Include="Physics">
       <UniqueIdentifier>{352beb65-243a-4d12-bd01-f64038d2710f}</UniqueIdentifier>
+      <Extensions>
+      </Extensions>
     </Filter>
     <Filter Include="Controls">
       <UniqueIdentifier>{ecc6a7f2-aad3-473e-9292-c4d0a73514be}</UniqueIdentifier>
@@ -32,117 +35,133 @@
     <Filter Include="DataStructures">
       <UniqueIdentifier>{29c5788e-a4e9-40d4-9b6d-f30b2a75651b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resources\Fonts">
+      <UniqueIdentifier>{758a4a14-9615-4dc0-9fea-2a3a9481e090}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Shaders">
+      <UniqueIdentifier>{8bcead41-d119-4def-bd91-bab5bff71aec}</UniqueIdentifier>
+      <Extensions>cpp;h</Extensions>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Game.cpp">
+    <ClCompile Include="src\Main\Game.cpp">
       <Filter>Main</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="src\Main\main.cpp">
       <Filter>Main</Filter>
     </ClCompile>
-    <ClCompile Include="Font.cpp">
-      <Filter>Contents\Fonts</Filter>
+    <ClCompile Include="src\glad.c" />
+    <ClCompile Include="src\Graphics\Shader.cpp">
+      <Filter>Graphics\Shaders</Filter>
     </ClCompile>
-    <ClCompile Include="FontLoader.cpp">
-      <Filter>Contents\Fonts\FontLoaders</Filter>
-    </ClCompile>
-    <ClCompile Include="FTLoader.cpp">
-      <Filter>Contents\Fonts\FontLoaders</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene.cpp">
-      <Filter>Contents\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="TextRenderer.cpp">
+    <ClCompile Include="src\Graphics\TextRenderer.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="Graphics.cpp">
+    <ClCompile Include="src\Graphics\Graphics.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="InputControls.cpp">
-      <Filter>Controls</Filter>
-    </ClCompile>
-    <ClCompile Include="BVHKDTree.cpp">
+    <ClCompile Include="src\DataStructures\BVHKDTree.cpp">
       <Filter>DataStructures</Filter>
     </ClCompile>
-    <ClCompile Include="Geometry.cpp">
-      <Filter>Physics</Filter>
+    <ClCompile Include="src\Contents\Fonts\Font.cpp">
+      <Filter>Contents\Fonts</Filter>
     </ClCompile>
-    <ClCompile Include="Mass.cpp">
-      <Filter>Physics</Filter>
+    <ClCompile Include="src\Contents\Fonts\FontLoaders\FTLoader.cpp">
+      <Filter>Contents\Fonts\FontLoaders</Filter>
     </ClCompile>
-    <ClCompile Include="Object.cpp">
-      <Filter>Physics</Filter>
+    <ClCompile Include="src\Controls\InputControls.cpp">
+      <Filter>Controls</Filter>
     </ClCompile>
-    <ClCompile Include="Particle.cpp">
-      <Filter>Physics</Filter>
+    <ClCompile Include="src\Contents\Fonts\FontManager.cpp">
+      <Filter>Contents</Filter>
     </ClCompile>
-    <ClCompile Include="Physics.cpp">
-      <Filter>Physics</Filter>
+    <ClCompile Include="src\Contents\Fonts\FontLoaders\FontLoader.cpp">
+      <Filter>Contents\Fonts\FontLoaders</Filter>
     </ClCompile>
-    <ClCompile Include="MassSpringScene.cpp">
+    <ClCompile Include="src\Contents\Scenes\Scene.cpp">
       <Filter>Contents\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="FontManager.cpp">
+    <ClCompile Include="src\Contents\Scenes\SceneManager.cpp">
       <Filter>Contents</Filter>
     </ClCompile>
-    <ClCompile Include="SceneManager.cpp">
-      <Filter>Contents</Filter>
+    <ClCompile Include="src\Contents\Scenes\MassSpringScene.cpp">
+      <Filter>Contents\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="ParticleForceGenerator.cpp" />
-    <ClCompile Include="glad.c" />
+    <ClCompile Include="src\Physics\Geometry.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Physics\Mass.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Physics\Object.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Physics\Particle.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Physics\ParticleForceGenerator.cpp" />
+    <ClCompile Include="src\Physics\Physics.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Game.h">
+    <ClInclude Include="src\Main\Game.h">
       <Filter>Main</Filter>
     </ClInclude>
-    <ClInclude Include="Font.h">
-      <Filter>Contents\Fonts</Filter>
+    <ClInclude Include="src\Graphics\Shader.h">
+      <Filter>Graphics\Shaders</Filter>
     </ClInclude>
-    <ClInclude Include="FontLoader.h">
-      <Filter>Contents\Fonts\FontLoaders</Filter>
-    </ClInclude>
-    <ClInclude Include="FTLoader.h">
-      <Filter>Contents\Fonts\FontLoaders</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>Contents\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="TextRenderer.h">
+    <ClInclude Include="src\Graphics\TextRenderer.h">
       <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="Graphics.h">
+    <ClInclude Include="src\Graphics\Graphics.h">
       <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="InputControls.h">
-      <Filter>Controls</Filter>
-    </ClInclude>
-    <ClInclude Include="BVHKDTree.h">
+    <ClInclude Include="src\DataStructures\BVHKDTree.h">
       <Filter>DataStructures</Filter>
     </ClInclude>
-    <ClInclude Include="Geometry.h">
-      <Filter>Physics</Filter>
+    <ClInclude Include="src\Contents\Fonts\Font.h">
+      <Filter>Contents\Fonts</Filter>
     </ClInclude>
-    <ClInclude Include="Mass.h">
-      <Filter>Physics</Filter>
+    <ClInclude Include="src\Contents\Fonts\FontLoaders\FTLoader.h">
+      <Filter>Contents\Fonts\FontLoaders</Filter>
     </ClInclude>
-    <ClInclude Include="Object.h">
-      <Filter>Physics</Filter>
+    <ClInclude Include="src\Controls\InputControls.h">
+      <Filter>Controls</Filter>
     </ClInclude>
-    <ClInclude Include="Particle.h">
-      <Filter>Physics</Filter>
+    <ClInclude Include="src\Contents\Fonts\FontManager.h">
+      <Filter>Contents</Filter>
     </ClInclude>
-    <ClInclude Include="Physics.h">
-      <Filter>Physics</Filter>
+    <ClInclude Include="src\Contents\Fonts\FontLoaders\FontLoader.h">
+      <Filter>Contents\Fonts\FontLoaders</Filter>
     </ClInclude>
-    <ClInclude Include="MassSpringScene.h">
+    <ClInclude Include="src\Contents\Scenes\Scene.h">
       <Filter>Contents\Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="FontManager.h">
+    <ClInclude Include="src\Contents\Scenes\SceneManager.h">
       <Filter>Contents</Filter>
     </ClInclude>
-    <ClInclude Include="SceneManager.h">
-      <Filter>Contents</Filter>
+    <ClInclude Include="src\Contents\Scenes\MassSpringScene.h">
+      <Filter>Contents\Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="ParticleForceGenerator.h" />
+    <ClInclude Include="src\Physics\Geometry.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Physics\Mass.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Physics\Object.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Physics\Particle.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Physics\ParticleForceGenerator.h" />
+    <ClInclude Include="src\Physics\Physics.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Resources\Fonts\arial.ttf" />
   </ItemGroup>
 </Project>
