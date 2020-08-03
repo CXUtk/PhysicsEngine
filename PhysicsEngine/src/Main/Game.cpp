@@ -1,8 +1,11 @@
 ﻿#include "Game.h"
-#include "Controls/InputControls.h"
+
 #include <iostream>
 #include <algorithm>
-#include "Graphics/TextRenderer.h"
+#include <glm/gtx/transform.hpp>
+
+#include "Graphics/Renderer/TextRenderer.h"
+#include "Controls/InputControls.h"
 
 
 static int currentFPS;
@@ -18,8 +21,8 @@ Game::Game(int width, int height) :_width(width), _height(height) {
     _fpsTimeOld = 0;
     _fpsCounter = 0;
     glfwInit();
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     _window = std::shared_ptr<GLFWwindow>(glfwCreateWindow(width, height, "Physics", nullptr, nullptr),
         [](GLFWwindow* ptr)->void {
@@ -37,15 +40,24 @@ Game::Game(int width, int height) :_width(width), _height(height) {
         return;
     }
     glfwSetFramebufferSizeCallback(_window.get(), framebuffer_size_callback);
-    //glEnable(GL_LINE_SMOOTH);
-    //glEnable(GL_POLYGON_SMOOTH);
-    //glEnable(GL_POINT_SMOOTH);
-    //glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
-    //glHint(GL_POLYGON_SMOOTH_HINT, GL_NICEST);
-    //glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
 
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glEnable(GL_LINE_SMOOTH);
+    glEnable(GL_POLYGON_SMOOTH);
+    glEnable(GL_POINT_SMOOTH);
+    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+    glHint(GL_POLYGON_SMOOTH_HINT, GL_NICEST);
+    glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
+
+
+
+    _shaderManager = std::make_shared<ShaderManager>();
     _sceneManager = std::make_shared<SceneManager>();
     _fontManager = std::make_shared<FontManager>();
+
+    _projectionMatrix = glm::ortho(0.f, static_cast<float>(_width), 0.f, static_cast<float>(_height));
+
 }
 
 Game::~Game() {
@@ -57,7 +69,7 @@ void Game::run() {
     double curTime = glfwGetTime();
     double elapsedTime = 0.016;
     while (!glfwWindowShouldClose(_window.get())) {
-        glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+        glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
         elapsedTime = std::min(elapsedTime, 0.016);
@@ -90,15 +102,15 @@ Game& Game::GetInstance() {
 }
 
 void Game::update(float delta) {
+    _projectionMatrix = glm::ortho(0.f, static_cast<float>(_width), 0.f, static_cast<float>(_height));
     InputControls::GetInstance().preUpdate(delta);
     _sceneManager->update(delta);
     InputControls::GetInstance().postUpdate(delta);
 }
 
 void Game::draw(float delta) {
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    glOrtho(-_width / 2, _width / 2, -_height / 2, _height / 2, 1, 0);
     _sceneManager->draw(delta);
-    TextRenderer::getInstance().drawText(glm::vec2(-_width / 2, _height / 2 - 30), std::to_string(currentFPS), 1);
+    auto fpsText = std::to_string(currentFPS);
+    auto size = TextRenderer::getInstance().measureString("default", fpsText, 1);
+    TextRenderer::getInstance().drawText(glm::vec2(0, _height - size.y), fpsText, 1, glm::vec3(1, 0, 0));
 }

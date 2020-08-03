@@ -51,12 +51,6 @@
       <Filter>Main</Filter>
     </ClCompile>
     <ClCompile Include="src\glad.c" />
-    <ClCompile Include="src\Graphics\Shader.cpp">
-      <Filter>Graphics\Shaders</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Graphics\TextRenderer.cpp">
-      <Filter>Graphics</Filter>
-    </ClCompile>
     <ClCompile Include="src\Graphics\Graphics.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
@@ -103,16 +97,28 @@
     <ClCompile Include="src\Physics\Physics.cpp">
       <Filter>Physics</Filter>
     </ClCompile>
+    <ClCompile Include="src\Graphics\Shaders\ShaderManager.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Shaders\ShaderData\ShaderData.cpp">
+      <Filter>Graphics\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Shaders\ShaderData\FontShaderData.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Shaders\ShaderData\DefaultShaderData.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Renderer\LineRenderer.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Renderer\TextRenderer.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Main\Game.h">
       <Filter>Main</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Graphics\Shader.h">
-      <Filter>Graphics\Shaders</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Graphics\TextRenderer.h">
-      <Filter>Graphics</Filter>
     </ClInclude>
     <ClInclude Include="src\Graphics\Graphics.h">
       <Filter>Graphics</Filter>
@@ -160,8 +166,35 @@
     <ClInclude Include="src\Physics\Physics.h">
       <Filter>Physics</Filter>
     </ClInclude>
+    <ClInclude Include="src\Graphics\Shaders\ShaderManager.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\Shaders\ShaderData\ShaderData.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\Shaders\ShaderData\FontShaderData.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\Shaders\ShaderData\DefaultShaderData.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\Renderer\LineRenderer.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\Renderer\TextRenderer.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Resources\Fonts\arial.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Shaders\font.frag" />
+    <None Include="Resources\Shaders\default.vert" />
+    <None Include="Resources\Shaders\default.frag" />
+    <None Include="cpp.hint" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Resources\Shaders\font.vert" />
   </ItemGroup>
 </Project>

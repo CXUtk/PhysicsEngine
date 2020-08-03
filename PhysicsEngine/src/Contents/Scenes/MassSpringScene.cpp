@@ -1,7 +1,8 @@
 ﻿#include <iostream>
+#include <sstream>
+#include <iomanip>
 #include "MassSpringScene.h"
 #include "Controls/InputControls.h"
-#include "Graphics/TextRenderer.h"
 #include "Main/Game.h"
 
 MassSpringScene::MassSpringScene() {
@@ -10,7 +11,7 @@ MassSpringScene::MassSpringScene() {
     config.stepsPerFrame = 64;
 
     _physics = new Physics(config);
-    _groundY = -200;
+    _groundY = 100;
 }
 
 MassSpringScene::~MassSpringScene() {
@@ -76,22 +77,14 @@ void MassSpringScene::draw(float delta) {
     auto mousePos = input.getMousePos();
     for (auto& m : _masses) {
         if (glm::distance(m._pos, mousePos) < 50) {
-            glColor3f(1.f, 0.f, 0.f);
-            glBegin(GL_LINES);
-            glVertex2f(mousePos.x, mousePos.y);
-            glVertex2f(m._pos.x, m._pos.y);
-            glEnd();
+            Game::GetInstance().getGraphics()->drawLine(mousePos, m._pos, glm::vec3(1, 0, 0), 1);
         }
     }
     int sz = _masses.size();
     for (int i = 0; i < sz; i++) {
         for (auto j : _adjancent[i]) {
             if (j < i) continue;
-            glColor3f(0.f, 1.f, 0.f);
-            glBegin(GL_LINES);
-            glVertex2f(_masses[i]._pos.x, _masses[i]._pos.y);
-            glVertex2f(_masses[j]._pos.x, _masses[j]._pos.y);
-            glEnd();
+            Game::GetInstance().getGraphics()->drawLine(_masses[i]._pos, _masses[j]._pos, glm::vec3(1), 1);
         }
     }
 
@@ -101,5 +94,10 @@ void MassSpringScene::draw(float delta) {
 
     auto width = Game::GetInstance().getWidth();
     auto height = Game::GetInstance().getHeight();
-    TextRenderer::getInstance().drawText(glm::vec2(-width / 2, height / 2 - 80), std::to_string(_elasticity), 1);
+
+    //std::stringstream ss;
+    //ss.setf(std::ios::fixed);
+    //ss << std::setprecision(2);
+    //ss << _elasticity;
+    //TextRenderer::getInstance().drawText(glm::vec2(0, height - 80), ss.str(), 1, glm::vec3(0, 1, 0));
 }

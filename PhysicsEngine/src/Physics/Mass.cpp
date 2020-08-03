@@ -1,6 +1,5 @@
 ﻿
 #include "Mass.h"
-#include "Graphics/TextRenderer.h"
 #include <glad/glad.h>
 
 
