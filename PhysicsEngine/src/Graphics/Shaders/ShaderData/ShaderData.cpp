@@ -56,6 +56,7 @@ GLuint ShaderData::loadShaderProgram(const std::string& vertexPath, const std::s
         vertexCode = vSS.str(), fragmentCode = fSS.str();
     }
     catch (std::ifstream::failure e) {
+        std::cerr << "Failed to load shaders" << std::endl;
         throw std::exception(e.what());
     }
     int vertex = compileVertexShader(vertexCode);

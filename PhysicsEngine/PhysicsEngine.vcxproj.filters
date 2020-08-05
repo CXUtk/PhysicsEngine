@@ -115,6 +115,15 @@
     <ClCompile Include="src\Graphics\Renderer\TextRenderer.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="src\Graphics\Renderer\PointRenderer.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Shaders\ShaderData\CircleShaderData.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Renderer\CircleRenderer.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Main\Game.h">
@@ -184,6 +193,15 @@
     <ClInclude Include="src\Graphics\Renderer\TextRenderer.h">
       <Filter>Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="src\Graphics\Renderer\PointRenderer.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\Shaders\ShaderData\CircleShaderData.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\Renderer\CircleRenderer.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Resources\Fonts\arial.ttf" />
@@ -193,6 +211,7 @@
     <None Include="Resources\Shaders\default.vert" />
     <None Include="Resources\Shaders\default.frag" />
     <None Include="cpp.hint" />
+    <None Include="Resources\Shaders\circle.frag" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Resources\Shaders\font.vert" />

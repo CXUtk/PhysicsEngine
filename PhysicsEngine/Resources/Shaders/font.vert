@@ -8,11 +8,11 @@
 layout (location = 0) in vec4 vertex;
 out vec2 texCoord;
 
-uniform mat4 uiMatrix;
+uniform mat4 projection;
 
 void main(){
     // Apply transformation to coordinates
-    gl_Position = uiMatrix * vec4(vertex.xy, 0, 1);
+    gl_Position = projection * vec4(vertex.xy, 0, 1);
     texCoord = vertex.zw;
 }
 

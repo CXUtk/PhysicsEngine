@@ -6,14 +6,15 @@
 // 线渲染器
 class LineRenderer {
 public:
+    LineRenderer();
     ~LineRenderer();
 
-    void drawLines(std::vector<glm::vec2> lines, const glm::vec3& color, float width);
-    static LineRenderer& getInstance();
+    void drawLines(const std::vector<glm::vec2>& lines, const glm::vec3& color, float width);
 
 private:
-    LineRenderer();
 
     GLuint _vaoLine;
     GLuint _vboLine;
+
+    static constexpr int BUFFER_SIZE = 1024;
 };

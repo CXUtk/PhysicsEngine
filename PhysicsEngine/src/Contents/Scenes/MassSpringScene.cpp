@@ -1,9 +1,11 @@
 ﻿#include <iostream>
 #include <sstream>
 #include <iomanip>
+
 #include "MassSpringScene.h"
 #include "Controls/InputControls.h"
 #include "Main/Game.h"
+#include <Graphics\Renderer\TextRenderer.h>
 
 MassSpringScene::MassSpringScene() {
     PhysicsConfig config;
@@ -75,29 +77,46 @@ void MassSpringScene::update(float delta) {
 void MassSpringScene::draw(float delta) {
     auto& input = InputControls::GetInstance();
     auto mousePos = input.getMousePos();
+
+    auto& game = Game::GetInstance();
+    game.getGraphics()->drawLine(glm::vec2(0, _groundY), glm::vec2(game.getWidth(), _groundY), glm::vec3(1, 1, 1), 1);
+
+    std::vector<glm::vec2> lines;
     for (auto& m : _masses) {
         if (glm::distance(m._pos, mousePos) < 50) {
-            Game::GetInstance().getGraphics()->drawLine(mousePos, m._pos, glm::vec3(1, 0, 0), 1);
+            lines.push_back(mousePos);
+            lines.push_back(m._pos);
         }
     }
+    Game::GetInstance().getGraphics()->drawLines(lines, glm::vec3(1, 0, 0), 1);
+
+    lines.clear();
     int sz = _masses.size();
     for (int i = 0; i < sz; i++) {
         for (auto j : _adjancent[i]) {
             if (j < i) continue;
-            Game::GetInstance().getGraphics()->drawLine(_masses[i]._pos, _masses[j]._pos, glm::vec3(1), 1);
+            lines.push_back(_masses[i]._pos);
+            lines.push_back(_masses[j]._pos);
+
         }
     }
-
+    Game::GetInstance().getGraphics()->drawLines(lines, glm::vec3(1), 1);
     for (auto& m : _masses) {
         m.draw(delta, _physics);
+    }
+
+    std::vector<glm::vec2> points;
+    for (auto& m : _masses) {
+        Game::GetInstance().getGraphics()->drawCircle(m._pos, 8, glm::vec3(0, 1, 0));
+        //points.push_back(m._pos);
     }
 
     auto width = Game::GetInstance().getWidth();
     auto height = Game::GetInstance().getHeight();
 
-    //std::stringstream ss;
-    //ss.setf(std::ios::fixed);
-    //ss << std::setprecision(2);
-    //ss << _elasticity;
-    //TextRenderer::getInstance().drawText(glm::vec2(0, height - 80), ss.str(), 1, glm::vec3(0, 1, 0));
+    std::stringstream ss;
+    ss.setf(std::ios::fixed);
+    ss << std::setprecision(2);
+    ss << _elasticity;
+    Game::GetInstance().getGraphics()->drawText(glm::vec2(0, height - 70), ss.str(), 1, glm::vec3(0, 1, 0));
 }

@@ -43,6 +43,7 @@ Game::Game(int width, int height) :_width(width), _height(height) {
 
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
     glEnable(GL_LINE_SMOOTH);
     glEnable(GL_POLYGON_SMOOTH);
     glEnable(GL_POINT_SMOOTH);
@@ -51,7 +52,7 @@ Game::Game(int width, int height) :_width(width), _height(height) {
     glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
 
 
-
+    _graphics = std::make_shared<Graphics>();
     _shaderManager = std::make_shared<ShaderManager>();
     _sceneManager = std::make_shared<SceneManager>();
     _fontManager = std::make_shared<FontManager>();
@@ -111,6 +112,6 @@ void Game::update(float delta) {
 void Game::draw(float delta) {
     _sceneManager->draw(delta);
     auto fpsText = std::to_string(currentFPS);
-    auto size = TextRenderer::getInstance().measureString("default", fpsText, 1);
-    TextRenderer::getInstance().drawText(glm::vec2(0, _height - size.y), fpsText, 1, glm::vec3(1, 0, 0));
+    auto size = getGraphics()->measureString("default", fpsText, 1);
+    getGraphics()->drawText(glm::vec2(0, _height - size.y), fpsText, 1, glm::vec3(1, 0, 0));
 }

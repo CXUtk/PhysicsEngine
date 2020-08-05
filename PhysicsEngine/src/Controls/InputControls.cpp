@@ -11,7 +11,7 @@ InputControls& InputControls::GetInstance() {
 }
 
 void InputControls::preUpdate(float dt) {
-    Game& game = Game::GetInstance();
+    auto& game = Game::GetInstance();
     auto _window = game.getWindow().get();
     double xpos, ypos;
     glfwGetCursorPos(_window, &xpos, &ypos);

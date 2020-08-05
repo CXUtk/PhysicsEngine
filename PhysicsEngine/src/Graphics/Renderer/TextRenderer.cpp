@@ -37,15 +37,15 @@ TextRenderer::TextRenderer() {
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
 
-    _fontShader.reset(new FontShaderData());
 }
 
 TextRenderer::~TextRenderer() {
 }
 
 void TextRenderer::drawText(glm::vec2 pos, const std::string& text, float scale, const glm::vec3& color) {
-    _fontShader->SetTextColor(color);
-    _fontShader->apply();
+    auto fontShader = Game::GetInstance().getShaderManager()->getFontShader();
+    fontShader->SetTextColor(color);
+    fontShader->apply();
 
     glActiveTexture(GL_TEXTURE0);
     glBindVertexArray(_vao);
@@ -75,11 +75,6 @@ glm::ivec2 TextRenderer::measureString(const std::string& font, const std::strin
         result.x += chr.Advance / 64;
     }
     return result;
-}
-
-TextRenderer& TextRenderer::getInstance() {
-    static TextRenderer instance;
-    return instance;
 }
 
 void TextRenderer::draw_quad(GLuint textureId, glm::vec2 bottomLeft, glm::vec2 size) {
