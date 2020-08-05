@@ -79,7 +79,7 @@ void MassSpringScene::draw(float delta) {
     auto mousePos = input.getMousePos();
 
     auto& game = Game::GetInstance();
-    game.getGraphics()->drawLine(glm::vec2(0, _groundY), glm::vec2(game.getWidth(), _groundY), glm::vec3(1, 1, 1), 1);
+    game.getGraphics()->drawLine(glm::vec2(0, _groundY - 4), glm::vec2(game.getWidth(), _groundY - 4), glm::vec3(0, 0, 0), 3);
 
     std::vector<glm::vec2> lines;
     for (auto& m : _masses) {
