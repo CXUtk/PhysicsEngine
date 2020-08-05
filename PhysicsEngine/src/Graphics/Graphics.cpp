@@ -7,6 +7,7 @@ Graphics::Graphics() {
     _textRenderer = std::make_unique<TextRenderer>();
     _pointRenderer = std::make_unique<PointRenderer>();
     _circleRenderer = std::make_unique<CircleRenderer>();
+    _spriteRenderer = std::make_unique<SpriteRenderer>();
 }
 
 Graphics::~Graphics() {
@@ -30,6 +31,11 @@ void Graphics::drawText(glm::vec2 pos, const std::string& text, float scale, con
 
 void Graphics::drawCircle(glm::vec2 center, float radius, const glm::vec3& color) {
     _circleRenderer->drawCircle(center, color, radius);
+}
+
+void Graphics::drawSprite(std::shared_ptr<Texture2D> texture, glm::vec2 pos, float scale, const glm::vec3& color) {
+    glm::vec2 origin = glm::vec2(0.5f, 0.5f);
+    _spriteRenderer->drawSprite(texture, pos, texture->getSize(), origin, scale, 0, color);
 }
 
 glm::ivec2 Graphics::measureString(const std::string& font, const std::string& text, float scale) const {

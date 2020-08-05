@@ -11,6 +11,5 @@ uniform sampler2D uTexure;
 uniform vec3 uColor;
 
 void main(){
-    vec4 sampled = vec4(1, 1, 1, texture2D(uTexure, texCoord).r);
-    color = vec4(uColor, 1) * sampled;
+    color = vec4(uColor, 1) * texture(uTexure, texCoord);
 }

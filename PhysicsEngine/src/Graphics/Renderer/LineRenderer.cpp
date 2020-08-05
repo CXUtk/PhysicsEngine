@@ -25,7 +25,8 @@ LineRenderer::~LineRenderer() {
 void LineRenderer::drawLines(const std::vector<glm::vec2>& lines, const glm::vec3& color, float width) {
     glLineWidth(width);
 
-    auto defaultShader = Game::GetInstance().getShaderManager()->getDefaultShader();
+    auto defaultShader = Game::GetInstance().getShaderManager()->getSpriteShader("pure");
+    defaultShader->setProjectionMatrix(Game::GetInstance().getProjectionMatrix());
     defaultShader->setColor(color);
     defaultShader->apply();
 

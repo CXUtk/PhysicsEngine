@@ -103,12 +103,6 @@
     <ClCompile Include="src\Graphics\Shaders\ShaderData\ShaderData.cpp">
       <Filter>Graphics\Shaders</Filter>
     </ClCompile>
-    <ClCompile Include="src\Graphics\Shaders\ShaderData\FontShaderData.cpp">
-      <Filter>Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Graphics\Shaders\ShaderData\DefaultShaderData.cpp">
-      <Filter>Graphics</Filter>
-    </ClCompile>
     <ClCompile Include="src\Graphics\Renderer\LineRenderer.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
@@ -118,10 +112,31 @@
     <ClCompile Include="src\Graphics\Renderer\PointRenderer.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="src\Graphics\Shaders\ShaderData\CircleShaderData.cpp">
+    <ClCompile Include="src\Graphics\Renderer\CircleRenderer.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="src\Graphics\Renderer\CircleRenderer.cpp">
+    <ClCompile Include="src\Graphics\Shaders\ShaderData\SpriteShaderData.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Renderer\SpriteRenderer.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\GLUtils.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Contents\Textures\TextureLoaders\STBLoader.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Contents\Textures\Texture2D.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Contents\Textures\TextureManager.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Contents\Textures\TextureLoaders\TextureLoader.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\stbi_image.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
   </ItemGroup>
@@ -181,12 +196,6 @@
     <ClInclude Include="src\Graphics\Shaders\ShaderData\ShaderData.h">
       <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="src\Graphics\Shaders\ShaderData\FontShaderData.h">
-      <Filter>Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Graphics\Shaders\ShaderData\DefaultShaderData.h">
-      <Filter>Graphics</Filter>
-    </ClInclude>
     <ClInclude Include="src\Graphics\Renderer\LineRenderer.h">
       <Filter>Graphics</Filter>
     </ClInclude>
@@ -196,10 +205,28 @@
     <ClInclude Include="src\Graphics\Renderer\PointRenderer.h">
       <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="src\Graphics\Shaders\ShaderData\CircleShaderData.h">
+    <ClInclude Include="src\Graphics\Renderer\CircleRenderer.h">
       <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="src\Graphics\Renderer\CircleRenderer.h">
+    <ClInclude Include="src\Graphics\Shaders\ShaderData\SpriteShaderData.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\Renderer\SpriteRenderer.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\GLUtils.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Contents\Textures\Texture2D.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Contents\Textures\TextureManager.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Contents\Textures\TextureLoaders\TextureLoader.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Contents\Textures\TextureLoaders\STBLoader.h">
       <Filter>Graphics</Filter>
     </ClInclude>
   </ItemGroup>
@@ -207,13 +234,14 @@
     <Font Include="Resources\Fonts\arial.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Shaders\font.frag" />
-    <None Include="Resources\Shaders\default.vert" />
-    <None Include="Resources\Shaders\default.frag" />
     <None Include="cpp.hint" />
     <None Include="Resources\Shaders\circle.frag" />
+    <None Include="Resources\Shaders\font.frag" />
+    <None Include="Resources\Shaders\graphic.frag" />
+    <None Include="Resources\Shaders\graphic2.vert" />
+    <None Include="Resources\Shaders\pure.frag" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Resources\Shaders\font.vert" />
+    <Text Include="Resources\Shaders\graphic.vert" />
   </ItemGroup>
 </Project>

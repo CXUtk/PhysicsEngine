@@ -2,10 +2,9 @@
 #include "ShaderData.h"
 #include <glm/glm.hpp>
 
-class DefaultShaderData : public ShaderData {
+class SpriteShaderData : public ShaderData {
 public:
-    DefaultShaderData();
-    ~DefaultShaderData() override {}
+    SpriteShaderData(int id);
 
     void setColor(const glm::vec3& color) { _color = color; }
     void setProjectionMatrix(const glm::mat4& proj) { _projection = proj; }

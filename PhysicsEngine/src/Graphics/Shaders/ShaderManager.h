@@ -4,21 +4,17 @@
 #include <memory>
 
 #include "ShaderData/ShaderData.h"
-#include "ShaderData/DefaultShaderData.h"
-#include "ShaderData/FontShaderData.h"
-#include "ShaderData/CircleShaderData.h"
+#include "ShaderData/SpriteShaderData.h"
 
 class ShaderManager {
 public:
     ShaderManager();
     ~ShaderManager();
 
-    std::shared_ptr<DefaultShaderData> getDefaultShader() { return _defaultShader; }
-    std::shared_ptr<FontShaderData> getFontShader() { return _fontShader; }
-    std::shared_ptr<CircleShaderData> getCircleShader() { return _circleShader; }
+    std::shared_ptr<SpriteShaderData> getSpriteShader(const std::string& name) { return _spriteShaders[name]; }
+
+    void update(float delta);
 
 private:
-    std::shared_ptr<DefaultShaderData> _defaultShader;
-    std::shared_ptr<FontShaderData> _fontShader;
-    std::shared_ptr<CircleShaderData> _circleShader;
+    std::map<std::string, std::shared_ptr<SpriteShaderData>> _spriteShaders;
 };

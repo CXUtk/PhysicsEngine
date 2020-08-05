@@ -3,7 +3,6 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
-#include "Graphics/Shaders/ShaderData/FontShaderData.h"
 
 class TextRenderer {
 public:

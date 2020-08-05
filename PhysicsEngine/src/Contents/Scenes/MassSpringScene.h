@@ -12,8 +12,8 @@ public:
     ~MassSpringScene() override;
 
     void simulate(float delta);
-    void update(float delta);
-    void draw(float delta);
+    void update(float delta) override;
+    void draw(float delta) override;
 
 private:
     int _groundY;

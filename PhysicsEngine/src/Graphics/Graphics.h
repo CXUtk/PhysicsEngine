@@ -7,6 +7,8 @@
 #include "Graphics/Renderer/LineRenderer.h"
 #include "Graphics/Renderer/PointRenderer.h"
 #include "Graphics/Renderer/CircleRenderer.h"
+#include "Graphics/Renderer/SpriteRenderer.h"
+#include "Contents/Textures/Texture2D.h"
 
 class Graphics {
 public:
@@ -18,6 +20,7 @@ public:
     void drawPoints(const std::vector<glm::vec2>& points, const glm::vec3& color, float radius);
     void drawText(glm::vec2 pos, const std::string& text, float scale, const glm::vec3& color);
     void drawCircle(glm::vec2 center, float radius, const glm::vec3& color);
+    void drawSprite(std::shared_ptr<Texture2D> texture, glm::vec2 pos, float scale, const glm::vec3& color);
 
 
     glm::ivec2 measureString(const std::string& font, const std::string& text, float scale) const;
@@ -27,4 +30,5 @@ private:
     std::unique_ptr<LineRenderer> _lineRenderer;
     std::unique_ptr<PointRenderer> _pointRenderer;
     std::unique_ptr<CircleRenderer> _circleRenderer;
+    std::unique_ptr<SpriteRenderer> _spriteRenderer;
 };

@@ -7,6 +7,7 @@
 #include "Contents/Fonts/FontManager.h"
 #include "Graphics/Shaders/ShaderManager.h"
 #include "Graphics/Graphics.h"
+#include "Contents/Textures/TextureManager.h"
 
 
 class Game {
@@ -21,6 +22,7 @@ public:
     std::shared_ptr<SceneManager> getSceneManager() { return _sceneManager; }
     std::shared_ptr<ShaderManager> getShaderManager() { return _shaderManager; }
     std::shared_ptr<Graphics> getGraphics() { return _graphics; }
+    std::shared_ptr<TextureManager> getTextureManager() { return _textureManager; }
 
 
     void setWidth(int width) { _width = width; }
@@ -43,6 +45,7 @@ private:
     std::shared_ptr<FontManager> _fontManager;
     std::shared_ptr<ShaderManager> _shaderManager;
     std::shared_ptr<Graphics> _graphics;
+    std::shared_ptr<TextureManager> _textureManager;
 
 
     glm::mat4 _projectionMatrix;

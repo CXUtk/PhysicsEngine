@@ -4,6 +4,8 @@
     Output: [vec4] color of text render by textColor
 */
 out vec4 color;
+
+// Color need to be rendered
 uniform vec3 uColor;
 
 void main(){

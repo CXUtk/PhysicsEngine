@@ -56,6 +56,7 @@ Game::Game(int width, int height) :_width(width), _height(height) {
     _shaderManager = std::make_shared<ShaderManager>();
     _sceneManager = std::make_shared<SceneManager>();
     _fontManager = std::make_shared<FontManager>();
+    _textureManager = std::make_shared<TextureManager>();
 
     _projectionMatrix = glm::ortho(0.f, static_cast<float>(_width), 0.f, static_cast<float>(_height));
 
@@ -113,5 +114,9 @@ void Game::draw(float delta) {
     _sceneManager->draw(delta);
     auto fpsText = std::to_string(currentFPS);
     auto size = getGraphics()->measureString("default", fpsText, 1);
+
+
     getGraphics()->drawText(glm::vec2(0, _height - size.y), fpsText, 1, glm::vec3(1, 0, 0));
+    auto texture = getTextureManager()->getTexture("icon");
+    getGraphics()->drawSprite(texture, glm::vec2(200, 200), 1, glm::vec3(1, 0, 0));
 }

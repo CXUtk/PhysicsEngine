@@ -19,17 +19,21 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Contents\Textures\Texture2D.cpp" />
+    <ClCompile Include="src\Contents\Textures\TextureLoaders\STBLoader.cpp" />
+    <ClCompile Include="src\Contents\Textures\TextureLoaders\TextureLoader.cpp" />
+    <ClCompile Include="src\Contents\Textures\TextureManager.cpp" />
     <ClCompile Include="src\DataStructures\BVHKDTree.cpp" />
     <ClCompile Include="src\Contents\Fonts\Font.cpp" />
     <ClCompile Include="src\Contents\Fonts\FontLoaders\FontLoader.cpp" />
     <ClCompile Include="src\Contents\Fonts\FontManager.cpp" />
     <ClCompile Include="src\Contents\Fonts\FontLoaders\FTLoader.cpp" />
+    <ClCompile Include="src\Graphics\GLUtils.cpp" />
     <ClCompile Include="src\Graphics\Renderer\CircleRenderer.cpp" />
     <ClCompile Include="src\Graphics\Renderer\LineRenderer.cpp" />
     <ClCompile Include="src\Graphics\Renderer\PointRenderer.cpp" />
-    <ClCompile Include="src\Graphics\Shaders\ShaderData\CircleShaderData.cpp" />
-    <ClCompile Include="src\Graphics\Shaders\ShaderData\DefaultShaderData.cpp" />
-    <ClCompile Include="src\Graphics\Shaders\ShaderData\FontShaderData.cpp" />
+    <ClCompile Include="src\Graphics\Renderer\SpriteRenderer.cpp" />
+    <ClCompile Include="src\Graphics\Shaders\ShaderData\SpriteShaderData.cpp" />
     <ClCompile Include="src\Graphics\Shaders\ShaderManager.cpp" />
     <ClCompile Include="src\Main\Game.cpp" />
     <ClCompile Include="src\Physics\Geometry.cpp" />
@@ -47,19 +51,24 @@
     <ClCompile Include="src\Contents\Scenes\SceneManager.cpp" />
     <ClCompile Include="src\Graphics\Shaders\ShaderData\ShaderData.cpp" />
     <ClCompile Include="src\Graphics\Renderer\TextRenderer.cpp" />
+    <ClCompile Include="src\stbi_image.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Contents\Textures\Texture2D.h" />
+    <ClInclude Include="src\Contents\Textures\TextureLoaders\STBLoader.h" />
+    <ClInclude Include="src\Contents\Textures\TextureLoaders\TextureLoader.h" />
+    <ClInclude Include="src\Contents\Textures\TextureManager.h" />
     <ClInclude Include="src\DataStructures\BVHKDTree.h" />
     <ClInclude Include="src\Contents\Fonts\Font.h" />
     <ClInclude Include="src\Contents\Fonts\FontLoaders\FontLoader.h" />
     <ClInclude Include="src\Contents\Fonts\FontManager.h" />
     <ClInclude Include="src\Contents\Fonts\FontLoaders\FTLoader.h" />
+    <ClInclude Include="src\Graphics\GLUtils.h" />
     <ClInclude Include="src\Graphics\Renderer\CircleRenderer.h" />
     <ClInclude Include="src\Graphics\Renderer\LineRenderer.h" />
     <ClInclude Include="src\Graphics\Renderer\PointRenderer.h" />
-    <ClInclude Include="src\Graphics\Shaders\ShaderData\CircleShaderData.h" />
-    <ClInclude Include="src\Graphics\Shaders\ShaderData\DefaultShaderData.h" />
-    <ClInclude Include="src\Graphics\Shaders\ShaderData\FontShaderData.h" />
+    <ClInclude Include="src\Graphics\Renderer\SpriteRenderer.h" />
+    <ClInclude Include="src\Graphics\Shaders\ShaderData\SpriteShaderData.h" />
     <ClInclude Include="src\Graphics\Shaders\ShaderData\ShaderData.h" />
     <ClInclude Include="src\Graphics\Shaders\ShaderManager.h" />
     <ClInclude Include="src\Main\Game.h" />
@@ -80,16 +89,17 @@
     <Font Include="Resources\Fonts\arial.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Resources\Shaders\font.vert" />
+    <Text Include="Resources\Shaders\graphic.vert" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
     <None Include="Resources\Shaders\circle.frag" />
-    <None Include="Resources\Shaders\default.frag" />
-    <None Include="Resources\Shaders\default.vert" />
+    <None Include="Resources\Shaders\graphic.frag" />
+    <None Include="Resources\Shaders\graphic2.vert" />
     <None Include="Resources\Shaders\font.frag">
       <FileType>Text</FileType>
     </None>
+    <None Include="Resources\Shaders\pure.frag" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

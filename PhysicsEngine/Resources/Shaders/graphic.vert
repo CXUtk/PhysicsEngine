@@ -9,10 +9,12 @@ layout (location = 0) in vec4 vertex;
 out vec2 texCoord;
 
 uniform mat4 projection;
+uniform mat4 view;
+uniform mat4 model;
 
 void main(){
     // Apply transformation to coordinates
-    gl_Position = projection * vec4(vertex.xy, 0, 1);
+    gl_Position = projection * view * model * vec4(vertex.xy, 0, 1);
     texCoord = vertex.zw;
 }
 
