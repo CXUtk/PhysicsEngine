@@ -118,5 +118,5 @@ void Game::draw(float delta) {
 
     getGraphics()->drawText(glm::vec2(0, _height - size.y), fpsText, 1, glm::vec3(1, 0, 0));
     auto texture = getTextureManager()->getTexture("icon");
-    getGraphics()->drawSprite(texture, glm::vec2(200, 200), 1, glm::vec3(1, 0, 0));
+    getGraphics()->drawSprite(texture, glm::vec2(200, 200), 1, glm::vec3(1, 1, 1));
 }

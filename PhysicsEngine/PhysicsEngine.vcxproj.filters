@@ -81,9 +81,6 @@
     <ClCompile Include="src\Contents\Scenes\MassSpringScene.cpp">
       <Filter>Contents\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="src\Physics\Geometry.cpp">
-      <Filter>Physics</Filter>
-    </ClCompile>
     <ClCompile Include="src\Physics\Mass.cpp">
       <Filter>Physics</Filter>
     </ClCompile>
@@ -174,9 +171,6 @@
     <ClInclude Include="src\Contents\Scenes\MassSpringScene.h">
       <Filter>Contents\Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="src\Physics\Geometry.h">
-      <Filter>Physics</Filter>
-    </ClInclude>
     <ClInclude Include="src\Physics\Mass.h">
       <Filter>Physics</Filter>
     </ClInclude>
@@ -227,6 +221,15 @@
       <Filter>Graphics</Filter>
     </ClInclude>
     <ClInclude Include="src\Contents\Textures\TextureLoaders\STBLoader.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UserInterface\UserInterface.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UserInterface\UIState.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UserInterface\UIElement.h">
       <Filter>Graphics</Filter>
     </ClInclude>
   </ItemGroup>

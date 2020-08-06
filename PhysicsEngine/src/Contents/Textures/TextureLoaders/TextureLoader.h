@@ -3,11 +3,6 @@
 #include <memory>
 #include "Contents/Textures/Texture2D.h"
 
-struct BitmapData {
-    int width, height;
-    unsigned char* data;
-};
-
 
 class TextureLoader {
 public:

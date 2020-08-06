@@ -13,4 +13,8 @@ public:
 private:
     GLuint _id;
     glm::ivec2 _size;
+    GLuint _internalFormat;
+    GLuint _imageFormat;
+    GLuint _warpS, _warpT;
+    GLuint _filterMin, filterMax;
 };

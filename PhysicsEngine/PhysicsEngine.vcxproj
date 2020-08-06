@@ -36,7 +36,6 @@
     <ClCompile Include="src\Graphics\Shaders\ShaderData\SpriteShaderData.cpp" />
     <ClCompile Include="src\Graphics\Shaders\ShaderManager.cpp" />
     <ClCompile Include="src\Main\Game.cpp" />
-    <ClCompile Include="src\Physics\Geometry.cpp" />
     <ClCompile Include="src\glad.c" />
     <ClCompile Include="src\Graphics\Graphics.cpp" />
     <ClCompile Include="src\Controls\InputControls.cpp" />
@@ -72,7 +71,6 @@
     <ClInclude Include="src\Graphics\Shaders\ShaderData\ShaderData.h" />
     <ClInclude Include="src\Graphics\Shaders\ShaderManager.h" />
     <ClInclude Include="src\Main\Game.h" />
-    <ClInclude Include="src\Physics\Geometry.h" />
     <ClInclude Include="src\Graphics\Graphics.h" />
     <ClInclude Include="src\Controls\InputControls.h" />
     <ClInclude Include="src\Physics\Mass.h" />
@@ -84,6 +82,9 @@
     <ClInclude Include="src\Contents\Scenes\Scene.h" />
     <ClInclude Include="src\Contents\Scenes\SceneManager.h" />
     <ClInclude Include="src\Graphics\Renderer\TextRenderer.h" />
+    <ClInclude Include="src\UserInterface\UIElement.h" />
+    <ClInclude Include="src\UserInterface\UIState.h" />
+    <ClInclude Include="src\UserInterface\UserInterface.h" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Resources\Fonts\arial.ttf" />
