@@ -44,12 +44,6 @@ Game::Game(int width, int height) :_width(width), _height(height) {
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    glEnable(GL_LINE_SMOOTH);
-    glEnable(GL_POLYGON_SMOOTH);
-    glEnable(GL_POINT_SMOOTH);
-    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
-    glHint(GL_POLYGON_SMOOTH_HINT, GL_NICEST);
-    glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
 
 
     _graphics = std::make_shared<Graphics>();
@@ -114,8 +108,9 @@ void Game::draw(float delta) {
     auto fpsText = std::to_string(currentFPS);
     auto size = getGraphics()->measureString("default", fpsText, 1);
 
-
+    static float rot = 0;
+    rot += 0.1f;
     getGraphics()->drawText(glm::vec2(0, _height - size.y), fpsText, 1, glm::vec3(1, 0, 0));
     auto texture = getTextureManager()->getTexture("icon");
-    getGraphics()->drawSprite(texture, glm::vec2(200, 200), 1, glm::vec3(1, 1, 1));
+    getGraphics()->drawSprite(texture, glm::vec2(200, 200), glm::vec2(0.5f, 0.5f), 1, rot, glm::vec3(1, 1, 1));
 }

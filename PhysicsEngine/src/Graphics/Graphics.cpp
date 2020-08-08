@@ -40,6 +40,10 @@ void Graphics::drawSprite(std::shared_ptr<Texture2D> texture, glm::vec2 pos, flo
     _spriteRenderer->drawSprite(texture, pos, texture->getSize(), origin, scale, 0, color);
 }
 
+void Graphics::drawSprite(std::shared_ptr<Texture2D> texture, glm::vec2 pos, glm::vec2 origin, float scale, float rotation, const glm::vec3& color) {
+    _spriteRenderer->drawSprite(texture, pos, texture->getSize(), origin, scale, rotation, color);
+}
+
 glm::ivec2 Graphics::measureString(const std::string& font, const std::string& text, float scale) const {
     return _textRenderer->measureString(font, text, scale);
 }

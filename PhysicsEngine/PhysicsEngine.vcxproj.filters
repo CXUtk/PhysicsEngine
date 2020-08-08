@@ -136,6 +136,9 @@
     <ClCompile Include="src\stbi_image.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="src\UserInterface\UIElement.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Main\Game.h">

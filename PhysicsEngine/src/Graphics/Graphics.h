@@ -22,6 +22,7 @@ public:
     void drawText(glm::vec2 pos, const std::string& text, float scale, const glm::vec3& color);
     void drawCircle(glm::vec2 center, float radius, const glm::vec3& color);
     void drawSprite(std::shared_ptr<Texture2D> texture, glm::vec2 pos, float scale, const glm::vec3& color);
+    void drawSprite(std::shared_ptr<Texture2D> texture, glm::vec2 pos, glm::vec2 origin, float scale, float rotation, const glm::vec3& color);
 
 
     std::shared_ptr<ShaderManager> getShaderManager() const { return _shaderManager; }

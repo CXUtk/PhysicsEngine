@@ -51,6 +51,7 @@
     <ClCompile Include="src\Graphics\Shaders\ShaderData\ShaderData.cpp" />
     <ClCompile Include="src\Graphics\Renderer\TextRenderer.cpp" />
     <ClCompile Include="src\stbi_image.cpp" />
+    <ClCompile Include="src\UserInterface\UIElement.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Contents\Textures\Texture2D.h" />
