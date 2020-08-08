@@ -9,6 +9,7 @@
 #include "Graphics/Renderer/CircleRenderer.h"
 #include "Graphics/Renderer/SpriteRenderer.h"
 #include "Contents/Textures/Texture2D.h"
+#include "Graphics/Shaders/ShaderManager.h"
 
 class Graphics {
 public:
@@ -23,6 +24,8 @@ public:
     void drawSprite(std::shared_ptr<Texture2D> texture, glm::vec2 pos, float scale, const glm::vec3& color);
 
 
+    std::shared_ptr<ShaderManager> getShaderManager() const { return _shaderManager; }
+
     glm::ivec2 measureString(const std::string& font, const std::string& text, float scale) const;
 
 private:
@@ -31,4 +34,6 @@ private:
     std::unique_ptr<PointRenderer> _pointRenderer;
     std::unique_ptr<CircleRenderer> _circleRenderer;
     std::unique_ptr<SpriteRenderer> _spriteRenderer;
+
+    std::shared_ptr<ShaderManager> _shaderManager;
 };

@@ -13,7 +13,7 @@ TextRenderer::~TextRenderer() {
 }
 
 void TextRenderer::drawText(glm::vec2 pos, const std::string& text, float scale, const glm::vec3& color) {
-    auto fontShader = Game::GetInstance().getShaderManager()->getSpriteShader("font");
+    auto fontShader = Game::GetInstance().getGraphics()->getShaderManager()->getSpriteShader("font");
     fontShader->setProjectionMatrix(Game::GetInstance().getProjectionMatrix());
     fontShader->setColor(color);
     fontShader->apply();

@@ -3,6 +3,8 @@
 #include "Renderer/PointRenderer.h"
 
 Graphics::Graphics() {
+    _shaderManager = std::make_shared<ShaderManager>();
+
     _lineRenderer = std::make_unique<LineRenderer>();
     _textRenderer = std::make_unique<TextRenderer>();
     _pointRenderer = std::make_unique<PointRenderer>();

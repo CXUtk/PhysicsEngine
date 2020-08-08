@@ -3,6 +3,11 @@
 #include <string>
 #include <map>
 #include "Texture2D.h"
+
+
+/*
+    管理图像资源的类，可以通过名字获取2D图像实例
+*/
 class TextureManager {
 public:
     TextureManager();

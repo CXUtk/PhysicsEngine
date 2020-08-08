@@ -10,7 +10,7 @@ SpriteRenderer::~SpriteRenderer() {
 }
 
 void SpriteRenderer::drawSprite(std::shared_ptr<Texture2D> texture, glm::vec2 pos, glm::vec2 size, glm::vec2 origin, float scale, float rotation, const glm::vec3& color) {
-    auto shader = Game::GetInstance().getShaderManager()->getSpriteShader("default");
+    auto shader = Game::GetInstance().getGraphics()->getShaderManager()->getSpriteShader("default");
 
     auto model = glm::identity<glm::mat4>();
     model = glm::translate(model, glm::vec3(pos, 0));

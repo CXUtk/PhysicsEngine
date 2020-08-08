@@ -22,7 +22,7 @@ void CircleRenderer::drawCircle(glm::vec2 center, const glm::vec3& color, float 
         // 右下角
         glm::vec4(center + glm::vec2(radius, -radius) * 0.5f, 1, 1),
     };
-    auto shader = Game::GetInstance().getShaderManager()->getSpriteShader("circle");
+    auto shader = Game::GetInstance().getGraphics()->getShaderManager()->getSpriteShader("circle");
     shader->setProjectionMatrix(Game::GetInstance().getProjectionMatrix());
     shader->setColor(color);
     shader->apply();

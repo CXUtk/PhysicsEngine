@@ -20,7 +20,6 @@ public:
     std::shared_ptr<GLFWwindow> getWindow() { return _window; }
     std::shared_ptr<FontManager> getFontManager() { return _fontManager; }
     std::shared_ptr<SceneManager> getSceneManager() { return _sceneManager; }
-    std::shared_ptr<ShaderManager> getShaderManager() { return _shaderManager; }
     std::shared_ptr<Graphics> getGraphics() { return _graphics; }
     std::shared_ptr<TextureManager> getTextureManager() { return _textureManager; }
 
@@ -43,7 +42,6 @@ private:
     std::shared_ptr<GLFWwindow> _window;
     std::shared_ptr<SceneManager> _sceneManager;
     std::shared_ptr<FontManager> _fontManager;
-    std::shared_ptr<ShaderManager> _shaderManager;
     std::shared_ptr<Graphics> _graphics;
     std::shared_ptr<TextureManager> _textureManager;
 

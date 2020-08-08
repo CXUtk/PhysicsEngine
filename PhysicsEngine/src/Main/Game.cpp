@@ -53,7 +53,6 @@ Game::Game(int width, int height) :_width(width), _height(height) {
 
 
     _graphics = std::make_shared<Graphics>();
-    _shaderManager = std::make_shared<ShaderManager>();
     _sceneManager = std::make_shared<SceneManager>();
     _fontManager = std::make_shared<FontManager>();
     _textureManager = std::make_shared<TextureManager>();

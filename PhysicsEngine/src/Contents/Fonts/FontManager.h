@@ -5,6 +5,11 @@
 #include <memory>
 
 #include "Contents/Fonts/Font.h"
+
+
+/*
+    管理字体资源的类，可以通过名字获取字体实例
+*/
 class FontManager {
 public:
     FontManager();

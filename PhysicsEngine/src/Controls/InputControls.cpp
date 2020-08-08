@@ -16,8 +16,10 @@ void InputControls::preUpdate(float dt) {
     double xpos, ypos;
     glfwGetCursorPos(_window, &xpos, &ypos);
     int state = glfwGetMouseButton(_window, GLFW_MOUSE_BUTTON_LEFT);
+    int rightState = glfwGetMouseButton(_window, GLFW_MOUSE_BUTTON_RIGHT);
 
     _mouseLeftPressing = (state == GLFW_PRESS);
+    _mouseRightPressing = (rightState == GLFW_PRESS);
     _mousePos = glm::vec2(xpos, -ypos + game.getHeight());
 
     for (int i = 32; i < 400; i++) {
@@ -27,5 +29,6 @@ void InputControls::preUpdate(float dt) {
 
 void InputControls::postUpdate(float dt) {
     _wasMouseLeftPressing = _mouseLeftPressing;
+    _wasMouseRightPressing = _mouseRightPressing;
     _keyStateOld = _keyState;
 }

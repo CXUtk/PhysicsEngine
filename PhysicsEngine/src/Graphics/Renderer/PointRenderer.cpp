@@ -7,7 +7,7 @@ PointRenderer::~PointRenderer() {
 
 void PointRenderer::drawPoints(std::vector<glm::vec2> points, const glm::vec3& color, float radius) {
     glPointSize(radius);
-    auto defaultShader = Game::GetInstance().getShaderManager()->getSpriteShader("pure");
+    auto defaultShader = Game::GetInstance().getGraphics()->getShaderManager()->getSpriteShader("pure");
     defaultShader->setProjectionMatrix(Game::GetInstance().getProjectionMatrix());
     defaultShader->setColor(color);
     defaultShader->apply();

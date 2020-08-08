@@ -19,21 +19,36 @@ MassSpringScene::MassSpringScene() {
 MassSpringScene::~MassSpringScene() {
 }
 
-glm::vec2 getForce(const glm::vec2& a, const glm::vec2& b, float rest_length, float elasticity) {
-    float dis = glm::length(b - a);
-    glm::vec2 n = glm::normalize(b - a);
-    return n * (dis - rest_length) * elasticity;
+glm::vec2 getForceImplict(Mass& a, Mass& b, float delta, float rest_length, float elasticity) {
+    glm::vec2 p0 = a._pos - b._pos;
+    glm::vec2 unit = glm::normalize(p0);
+    p0 -= unit * 50.f;
+    float damping = 1.f;
+    float gamma = 0.5f * sqrt(4 * elasticity - damping * damping);
+    glm::vec2 c = p0 * damping / (2 * gamma) + a._velocity * (1 / gamma);
+    glm::vec2 target = p0 * cos(gamma * delta) + c * sin(gamma * delta);
+    target *= exp(-0.5f * delta * damping);
+
+    return (target - p0) * (1 / delta / delta) - a._velocity * 1.f / delta;
 }
 
-float _elasticity = 5000;
+glm::vec2 getForceExplict(Mass& a, Mass& b, float delta, float rest_length, float elasticity) {
+    float dis = glm::length(b._pos - a._pos);
+    glm::vec2 n = glm::normalize(b._pos - a._pos);
+    return n * (dis - rest_length) * elasticity - a._velocity * 1.f;
+}
+
+float _elasticity = 100;
 void MassSpringScene::simulate(float delta) {
     int sz = _masses.size();
     for (int i = 0; i < sz; i++) {
         for (auto j : _adjancent[i]) {
             Mass& m1 = _masses[i];
             Mass& m2 = _masses[j];
-            m1.addForce(getForce(m1._pos, m2._pos, 50, _elasticity));
-            m2.addForce(getForce(m2._pos, m1._pos, 50, _elasticity));
+            //getForce(m1, m2, delta, 50, _elasticity);
+            //getForce(m2, m1, delta, 50, _elasticity);
+            m1.addForce(getForceExplict(m1, m2, delta, 50, _elasticity));
+            m2.addForce(getForceExplict(m2, m1, delta, 50, _elasticity));
         }
 
     }
@@ -63,6 +78,9 @@ void MassSpringScene::update(float delta) {
                 _adjancent[k].push_back(i);
             }
         }
+    }
+    else if (input.isRightClicked()) {
+        _masses.push_back(Mass(input.getMousePos(), 1, true));
     }
     if (input.isKeyJustPress(GLFW_KEY_A)) {
         _elasticity *= 1.1f;
