@@ -12,8 +12,10 @@ public:
     void postUpdate(float dt);
     bool isLeftClicked() const { return !_wasMouseLeftPressing && _mouseLeftPressing; }
     bool isMouseLeftDown() const { return _mouseLeftPressing; }
+    bool isMouseLeftUp() const { return _wasMouseLeftPressing && !_mouseLeftPressing; }
     bool isRightClicked()const { return !_wasMouseRightPressing && _mouseRightPressing; }
-    bool isMouseRightDown() { _mouseRightPressing; }
+    bool isMouseRightDown() { return _mouseRightPressing; }
+    bool isMouseRightUp() const { return _wasMouseRightPressing && !_mouseRightPressing; }
     glm::vec2 getMousePos() const { return _mousePos; }
     bool isKeyJustPress(int keyCode) const { return _keyState[keyCode] && !_keyStateOld[keyCode]; }
 

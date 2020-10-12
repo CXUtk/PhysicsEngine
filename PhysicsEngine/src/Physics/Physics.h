@@ -2,14 +2,10 @@
 #include <glm/glm.hpp>
 #include <glm/gtx/transform.hpp>
 #include <vector>
+#include <memory>
 
 #include "Object.h"
-#include "ParticleForceGenerator.h"
-
-
-class Particle;
-class ParticleForceGenerator;
-class GravityForceGenerator;
+#include "Physics/ForceGenerater/ParticleForceGenerator.h"
 
 struct PhysicsConfig {
     glm::vec2 gravity;
@@ -20,21 +16,19 @@ class Physics {
 public:
     struct ForceRegisteration {
         Particle* particle;
-        ParticleForceGenerator* forceGen;
+        std::shared_ptr<ParticleForceGenerator> forceGen;
     };
     Physics(const PhysicsConfig& config);
-    ~Physics() { delete _gravityGenerator; }
+    ~Physics();
 
     glm::vec2 getGravity()const { return _config.gravity; }
     int getStepsPerFrame() const { return _config.stepsPerFrame; }
 
-    void addGravity(Particle* particle);
-    void registerForce(Particle* particle, ParticleForceGenerator* forceGen);
-    void removeForce(Particle* particle, ParticleForceGenerator* forceGen);
+    void registerForce(Particle* particle, std::shared_ptr<ParticleForceGenerator> forceGen);
+    void removeForce(Particle* particle, std::shared_ptr<ParticleForceGenerator> forceGen);
     void updateForces(float dt);
 
 private:
     PhysicsConfig _config;
     std::vector<ForceRegisteration> _forceRegs;
-    GravityForceGenerator* _gravityGenerator;
 };

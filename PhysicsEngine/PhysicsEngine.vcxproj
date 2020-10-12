@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Contents\Scenes\TrapozoidalMapScene.cpp" />
     <ClCompile Include="src\Contents\Textures\Texture2D.cpp" />
     <ClCompile Include="src\Contents\Textures\TextureLoaders\STBLoader.cpp" />
     <ClCompile Include="src\Contents\Textures\TextureLoaders\TextureLoader.cpp" />
@@ -40,11 +41,10 @@
     <ClCompile Include="src\Graphics\Graphics.cpp" />
     <ClCompile Include="src\Controls\InputControls.cpp" />
     <ClCompile Include="src\Main\main.cpp" />
-    <ClCompile Include="src\Physics\Mass.cpp" />
     <ClCompile Include="src\Contents\Scenes\MassSpringScene.cpp" />
     <ClCompile Include="src\Physics\Object.cpp" />
     <ClCompile Include="src\Physics\Particle.cpp" />
-    <ClCompile Include="src\Physics\ParticleForceGenerator.cpp" />
+    <ClCompile Include="src\Physics\ForceGenerater\ParticleForceGenerator.cpp" />
     <ClCompile Include="src\Physics\Physics.cpp" />
     <ClCompile Include="src\Contents\Scenes\Scene.cpp" />
     <ClCompile Include="src\Contents\Scenes\SceneManager.cpp" />
@@ -54,6 +54,7 @@
     <ClCompile Include="src\UserInterface\UIElement.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Contents\Scenes\TrapozoidalMapScene.h" />
     <ClInclude Include="src\Contents\Textures\Texture2D.h" />
     <ClInclude Include="src\Contents\Textures\TextureLoaders\STBLoader.h" />
     <ClInclude Include="src\Contents\Textures\TextureLoaders\TextureLoader.h" />
@@ -74,11 +75,10 @@
     <ClInclude Include="src\Main\Game.h" />
     <ClInclude Include="src\Graphics\Graphics.h" />
     <ClInclude Include="src\Controls\InputControls.h" />
-    <ClInclude Include="src\Physics\Mass.h" />
     <ClInclude Include="src\Contents\Scenes\MassSpringScene.h" />
     <ClInclude Include="src\Physics\Object.h" />
     <ClInclude Include="src\Physics\Particle.h" />
-    <ClInclude Include="src\Physics\ParticleForceGenerator.h" />
+    <ClInclude Include="src\Physics\ForceGenerater\ParticleForceGenerator.h" />
     <ClInclude Include="src\Physics\Physics.h" />
     <ClInclude Include="src\Contents\Scenes\Scene.h" />
     <ClInclude Include="src\Contents\Scenes\SceneManager.h" />

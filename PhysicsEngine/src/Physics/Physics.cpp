@@ -1,21 +1,22 @@
 ﻿#include "Physics.h"
-#include "ParticleForceGenerator.h"
+#include "Physics/ForceGenerater/ParticleForceGenerator.h"
 
 
 Physics::Physics(const PhysicsConfig& config) :_config(config) {
-    _gravityGenerator = new GravityForceGenerator(config.gravity);
 }
 
-void Physics::addGravity(Particle* particle) {
-    registerForce(particle, _gravityGenerator);
+Physics::~Physics() {
 }
 
-void Physics::registerForce(Particle* particle, ParticleForceGenerator* forceGen) {
-    this->_forceRegs.push_back({ particle, forceGen });
+
+void Physics::registerForce(Particle* particle, std::shared_ptr<ParticleForceGenerator> forceGen) {
+    ForceRegisteration forceR;
+    forceR.particle = particle;
+    forceR.forceGen = forceGen;
+    this->_forceRegs.emplace_back(forceR);
 }
 
-void Physics::removeForce(Particle* particle, ParticleForceGenerator* forceGen) {
-    // Not implemented
+void Physics::removeForce(Particle* particle, std::shared_ptr<ParticleForceGenerator> forceGen) {
 }
 
 void Physics::updateForces(float dt) {

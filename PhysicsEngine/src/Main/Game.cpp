@@ -40,7 +40,7 @@ Game::Game(int width, int height) :_width(width), _height(height) {
         return;
     }
     glfwSetFramebufferSizeCallback(_window.get(), framebuffer_size_callback);
-
+    glEnable(GL_LINE_SMOOTH);
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
@@ -51,7 +51,7 @@ Game::Game(int width, int height) :_width(width), _height(height) {
     _fontManager = std::make_shared<FontManager>();
     _textureManager = std::make_shared<TextureManager>();
 
-    _projectionMatrix = glm::ortho(0.f, static_cast<float>(_width), 0.f, static_cast<float>(_height));
+    _projectionMatrix = glm::ortho(-50.f, static_cast<float>(150), -20.f, static_cast<float>(130));
 
 }
 
@@ -84,7 +84,7 @@ void Game::run() {
         if (timeNow - _fpsTimeOld > 1.0) {
             _fpsTimeOld = glfwGetTime();
             currentFPS = _fpsCounter;
-            std::cout << "FPS:" << _fpsCounter << std::endl;
+            // std::cout << "FPS:" << _fpsCounter << std::endl;
             _fpsCounter = 0;
         }
         curTime = timeNow;
@@ -97,7 +97,7 @@ Game& Game::GetInstance() {
 }
 
 void Game::update(float delta) {
-    _projectionMatrix = glm::ortho(0.f, static_cast<float>(_width), 0.f, static_cast<float>(_height));
+    //_projectionMatrix = glm::ortho(0.f, static_cast<float>(_width), 0.f, static_cast<float>(_height));
     InputControls::GetInstance().preUpdate(delta);
     _sceneManager->update(delta);
     InputControls::GetInstance().postUpdate(delta);

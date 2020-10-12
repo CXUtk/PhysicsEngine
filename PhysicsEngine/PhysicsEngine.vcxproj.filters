@@ -81,16 +81,12 @@
     <ClCompile Include="src\Contents\Scenes\MassSpringScene.cpp">
       <Filter>Contents\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="src\Physics\Mass.cpp">
-      <Filter>Physics</Filter>
-    </ClCompile>
     <ClCompile Include="src\Physics\Object.cpp">
       <Filter>Physics</Filter>
     </ClCompile>
     <ClCompile Include="src\Physics\Particle.cpp">
       <Filter>Physics</Filter>
     </ClCompile>
-    <ClCompile Include="src\Physics\ParticleForceGenerator.cpp" />
     <ClCompile Include="src\Physics\Physics.cpp">
       <Filter>Physics</Filter>
     </ClCompile>
@@ -139,6 +135,10 @@
     <ClCompile Include="src\UserInterface\UIElement.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="src\Physics\ForceGenerater\ParticleForceGenerator.cpp" />
+    <ClCompile Include="src\Contents\Scenes\TrapozoidalMapScene.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Main\Game.h">
@@ -174,16 +174,12 @@
     <ClInclude Include="src\Contents\Scenes\MassSpringScene.h">
       <Filter>Contents\Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="src\Physics\Mass.h">
-      <Filter>Physics</Filter>
-    </ClInclude>
     <ClInclude Include="src\Physics\Object.h">
       <Filter>Physics</Filter>
     </ClInclude>
     <ClInclude Include="src\Physics\Particle.h">
       <Filter>Physics</Filter>
     </ClInclude>
-    <ClInclude Include="src\Physics\ParticleForceGenerator.h" />
     <ClInclude Include="src\Physics\Physics.h">
       <Filter>Physics</Filter>
     </ClInclude>
@@ -233,6 +229,10 @@
       <Filter>Graphics</Filter>
     </ClInclude>
     <ClInclude Include="src\UserInterface\UIElement.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Physics\ForceGenerater\ParticleForceGenerator.h" />
+    <ClInclude Include="src\Contents\Scenes\TrapozoidalMapScene.h">
       <Filter>Graphics</Filter>
     </ClInclude>
   </ItemGroup>

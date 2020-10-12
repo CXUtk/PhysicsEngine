@@ -28,7 +28,8 @@ public:
     void setHeight(int height) { _height = height; }
     int getWidth() const { return _width; }
     int getHeight() const { return _height; }
-    glm::mat4 getProjectionMatrix() { return _projectionMatrix; }
+    glm::mat4 getProjectionMatrix() const { return _projectionMatrix; }
+    void setProjectionMatrix(const glm::mat4& mat) { _projectionMatrix = mat; }
 
 private:
     // 构造函数private声明，确保单例

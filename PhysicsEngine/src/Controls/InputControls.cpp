@@ -1,5 +1,6 @@
 ﻿#include "InputControls.h"
 #include "Main/Game.h"
+#include <glm/gtx/transform.hpp>
 
 InputControls::InputControls() :_mousePos(glm::vec2(0)), _mouseLeftPressing(false), _wasMouseLeftPressing(false) {
 
@@ -21,6 +22,10 @@ void InputControls::preUpdate(float dt) {
     _mouseLeftPressing = (state == GLFW_PRESS);
     _mouseRightPressing = (rightState == GLFW_PRESS);
     _mousePos = glm::vec2(xpos, -ypos + game.getHeight());
+    auto mat = game.getProjectionMatrix();
+    auto tmppos = _mousePos / glm::vec2(game.getWidth(), game.getHeight()) * 2.f - glm::vec2(1, 1) * 2.f - glm::vec2(1, 1);
+    auto v = glm::unProject(glm::vec3(_mousePos, 1.f), glm::identity<glm::mat4>(), mat, glm::vec4(0, 0, 800, 600));
+    _mousePos = v;
 
     for (int i = 32; i < 400; i++) {
         _keyState[i] = (glfwGetKey(_window, i) == GLFW_PRESS);
