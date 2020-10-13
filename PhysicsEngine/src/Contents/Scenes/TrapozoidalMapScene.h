@@ -632,6 +632,7 @@ struct TrapozoidalMap {
         }
     }
 
+
     Node* _queryStart(Node* node, const Segment* seg) {
         if (node->type == NodeType::TRAPOZOID)
             return node;
@@ -649,8 +650,8 @@ struct TrapozoidalMap {
             if (d == 1) d = 0;
             else if (d == -1) d = 1;
             else {
-                // if the slope of seg greater than the slope of judging seg then it is above
-                d = dcmp(std::abs(seg->slope()) - std::abs(node->segment->slope())) < 0;
+                // if the slope of seg is greater than the slope of judging seg then it is above
+                d = dcmp(seg->slope() - node->segment->slope()) < 0;
             }
             return _queryStart(node->ch[d], seg);
         }
@@ -674,13 +675,14 @@ struct TrapozoidalMap {
             if (d == 1) d = 0;
             else if (d == -1) d = 1;
             else {
-                // if the slope of seg greater than the slope of judging seg then it is above
-                d = dcmp(std::abs(seg->slope()) - std::abs(node->segment->slope())) < 0;
+                // if the slope of seg is less than the slope of judging seg then it is above
+                d = dcmp(seg->slope() - node->segment->slope()) > 0;
             }
             return _queryEnd(node->ch[d], seg);
         }
         return node;
     }
+
 
     Node* query(Node* node, const Vector2& pos) {
         if (node->type == NodeType::TRAPOZOID)
