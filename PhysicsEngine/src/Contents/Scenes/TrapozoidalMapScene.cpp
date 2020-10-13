@@ -17,11 +17,11 @@ TrapozoidalMapScene::TrapozoidalMapScene() {
     Vector2 seg3A(60, 55), seg3B(95, 15);
     _map.insert(seg3A, seg3B, true);
 
-    //Vector2 seg4A(40, 5), seg4B(95, 15);
-    //_map.insert(seg4A, seg4B, true);
+    Vector2 seg4A(40, 5), seg4B(95, 15);
+    _map.insert(seg4A, seg4B, true);
 
-    //Vector2 seg5A(4, 80), seg5B(85, 70);
-    //_map.insert(seg5A, seg5B, true);
+    Vector2 seg5A(5, 40), seg5B(25, 20);
+    _map.insert(seg5A, seg5B, true);
 
     _map.report();
 }

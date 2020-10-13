@@ -55,6 +55,9 @@ struct Vector2 {
     bool operator==(const Vector2& other) const {
         return !dcmp(x - other.x) && !dcmp(y - other.y);
     }
+    bool operator!=(const Vector2& other) const {
+        return !(*this == other);
+    }
 
     Vector2& operator+=(const Vector2& vec) {
         this->x += vec.x, this->y += vec.y;
@@ -319,44 +322,83 @@ struct TrapozoidalMap {
         A->corner[2] = oldCopy.getTop(pointA.x);
         A->corner[3] = oldCopy.getBottom(pointA.x);
 
-        // Turn P to point node
-        P1->type = NodeType::POINT;
-        P1->point = segment->start;
-        P1->ch[0] = createTrapozoidReferenceNode(A);
-
-        // P2 is the right point
-        Node* P2 = createPointReferenceNode(segment->end);
-        // B is the right Trapozoid
-        Node* B = createTrapozoid(
-            Trapozoid(oldCopy.getBottom(pointB.x), oldCopy.getTop(pointB.x),
-                oldCopy.getTop(oldCopy.corner[2].x),
-                oldCopy.getBottom(oldCopy.corner[2].x), oldCopy.top,
-                oldCopy.bottom));
-        P2->ch[1] = B;
-        P1->ch[1] = P2;
+        // current node to process
+        Node* cur = nullptr;
 
         // S1 is the middle segment node
-        Node* S1 = createSegmentReferenceNode(segment);
-        P2->ch[0] = S1;
+        Node* S1 = nullptr;
+        Node* B = nullptr;
+        bool nonzeroLeft = dcmp(pointA.x - oldCopy.corner[0].x);
+        bool nonzeroRight = dcmp(pointB.x - oldCopy.corner[3].x);
+        if (!nonzeroLeft && !nonzeroRight) {
+            P1->type = NodeType::SEGMENT;
+            P1->segment = segment;
+            S1 = P1;
+            cur = P1;
+        }
+        else {
+            S1 = createSegmentReferenceNode(segment);
+            // Turn P to point node
+            if (nonzeroLeft) {
+                P1->type = NodeType::POINT;
+                P1->point = segment->start;
+                P1->ch[0] = createTrapozoidReferenceNode(A);
+                cur = P1;
+            }
+            if (nonzeroRight) {
+                // P2 is the right point
+                // B is the right Trapozoid
+                B = createTrapozoid(
+                    Trapozoid(oldCopy.getBottom(pointB.x), oldCopy.getTop(pointB.x),
+                        oldCopy.getTop(oldCopy.corner[2].x),
+                        oldCopy.getBottom(oldCopy.corner[2].x), oldCopy.top,
+                        oldCopy.bottom));
+
+                Node* P2 = nullptr;/*createPointReferenceNode(segment->end);*/
+                if (cur) {
+                    P2 = createPointReferenceNode(segment->end);
+                    cur->ch[1] = P2;
+                    cur = P2;
+                }
+                else {
+                    P1->type = NodeType::POINT;
+                    P1->point = segment->end;
+                    P1->ch[0] = S1;
+                    cur = P1;
+                }
+                cur->ch[1] = B;
+                cur->ch[0] = S1;
+            }
+            else {
+                // Only A, so right child is segment
+                if (cur) {
+                    cur->ch[1] = S1;
+                }
+            }
+        }
+
+        cur = S1;
 
         // C is the middle top Trapozoid
         Node* C = createTrapozoid(Trapozoid(pointA, oldCopy.getTop(pointA.x),
             oldCopy.getTop(pointB.x), pointB,
             oldCopy.top, segment));
-        S1->ch[0] = C;
+        cur->ch[0] = C;
         // C is the middle bottom Trapozoid
         Node* D = createTrapozoid(Trapozoid(oldCopy.getBottom(pointA.x), pointA,
             pointB, oldCopy.getBottom(pointB.x),
             segment, oldCopy.bottom));
-        S1->ch[1] = D;
+        cur->ch[1] = D;
 
         // A - (CD) - B
         // Link them together
-        A->doubleLinkRight(C->trapozoid, D->trapozoid);
-        B->trapozoid->doubleLinkLeft(C->trapozoid, D->trapozoid);
-
-        B->trapozoid->linkRight(oldCopy.right[0], oldCopy.right[1]);
-        B->trapozoid->inheritLinkRight(oldCopy.right[0], oldCopy.right[1], A);
+        if (!A->zeroArea())
+            A->doubleLinkRight(C->trapozoid, D->trapozoid);
+        if (B) {
+            B->trapozoid->doubleLinkLeft(C->trapozoid, D->trapozoid);
+            B->trapozoid->linkRight(oldCopy.right[0], oldCopy.right[1]);
+            B->trapozoid->inheritLinkRight(oldCopy.right[0], oldCopy.right[1], A);
+        }
     }
 
     void modifyCase2(Node* P1, Segment* segment) {
@@ -568,10 +610,14 @@ struct TrapozoidalMap {
             _holdingTrap->corner[3] = oldCopy.getBottom(pointB.x);
         }
         Node* D = createTrapozoidReferenceNode(A);
-        Node* E = createTrapozoid(Trapozoid(oldCopy.getBottom(pointB.x), oldCopy.getTop(pointB.x),
-            oldCopy.corner[2], oldCopy.corner[3],
-            oldCopy.top, oldCopy.bottom));
 
+        bool nonzeroRight = dcmp(pointB.x - oldCopy.corner[3].x);
+        Node* E = nullptr;
+        if (nonzeroRight) {
+            E = createTrapozoid(Trapozoid(oldCopy.getBottom(pointB.x), oldCopy.getTop(pointB.x),
+                oldCopy.corner[2], oldCopy.corner[3],
+                oldCopy.top, oldCopy.bottom));
+        }
 
         // S1 is the right segment
         Node* S1 = createSegmentReferenceNode(segment);
@@ -583,12 +629,14 @@ struct TrapozoidalMap {
         P1->ch[1] = E;
         P1->ch[0] = S1;
 
-        _holdingTrap->linkRight(E->trapozoid, nullptr);
-        A->linkRight(E->trapozoid, nullptr);
-        E->trapozoid->linkLeft((extend == 0) ? _holdingTrap : A, (extend == 0) ? A : _holdingTrap);
+        if (E) {
+            _holdingTrap->linkRight(E->trapozoid, nullptr);
+            A->linkRight(E->trapozoid, nullptr);
+            E->trapozoid->linkLeft((extend == 0) ? _holdingTrap : A, (extend == 0) ? A : _holdingTrap);
 
-        E->trapozoid->linkRight(oldCopy.right[0], oldCopy.right[1]);
-        E->trapozoid->inheritLinkRight(oldCopy.right[0], oldCopy.right[1], A);
+            E->trapozoid->linkRight(oldCopy.right[0], oldCopy.right[1]);
+            E->trapozoid->inheritLinkRight(oldCopy.right[0], oldCopy.right[1], A);
+        }
     }
 
 
@@ -722,6 +770,10 @@ struct TrapozoidalMap {
             for (int i = 0; i < 4; i++) std::cout << t.corner[i] << " ";
             std::cout << "}\n";
         }
+    }
+
+    void trim() {
+
     }
 };
 
